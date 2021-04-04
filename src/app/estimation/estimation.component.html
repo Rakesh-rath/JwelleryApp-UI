@@ -1,0 +1,41 @@
+<form #loginForm="ngForm" (ngSubmit)="CalculateTotalPrice()" class="form-horizontal" autocomplete="off">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title mt-3">Welcome {{ customerType }} User</h3>
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="goldprice">Gold Price(Per Gram)</label>
+                <div class="col-sm-4">
+                    <input name="goldprice" type="number" [(ngModel)]="model.goldprice" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="goldweight">Weight(grams)</label>
+                <div class="col-sm-4">
+                    <input name="goldweight" type="number" [(ngModel)]="model.goldweight" class="form-control">
+                </div>
+            </div>
+            <div class="form-group" *ngIf="customerType == 'Privileged'">
+                <label class="col-sm-2 control-label" for="Discount">Discount %</label>
+                <div class="col-sm-4">
+                    <input name="Discount" type="number" value="2" [(ngModel)]="model.Discount" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="totalprice">Total Price</label>
+                <div class="col-sm-4">
+                    <input name="totalprice" readonly type="number" [(ngModel)]="model.totalprice" class="form-control">
+                </div>
+            </div>
+
+
+        </div>
+        <div>
+            <button class="btn btn-primary" type="submit">Calculate</button> &nbsp;
+            <button class="btn btn-primary" type="cancel" [routerLink]="['/']">Cancel</button> &nbsp;
+            <button class="btn btn-primary" type="submit" (click)='printtoscreen()'>Print to Screen</button>
+        </div>
+    </div>
+</form>
